@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Related Records">
+        <template if:true={records}>
+            <template for:each={records} for:item="record" for:index="index">
+                <lightning-card key={record.Id} title=''>
+                    <template for:each={record.fields} for:item="field">
+                        <div key={field.fieldName} style="margin-left: 16px;">
+                            <strong>{field.fieldName}</strong>: {field.value}
+                        </div>
+                    </template>
+                </lightning-card>
+            </template>
+        </template>
+        <template if:true={error}>
+            <div class="slds-text-color_error">{error}</div>
+        </template>
+    </lightning-card>
+</template>
